@@ -11,6 +11,7 @@ const SearchBar = ({ location, handleLocation, handleSubmitLocation }) => {
           label="Location"
           variant="outlined"
           onChange={handleLocation}
+          value={location}
         ></TextField>
         <Button
           variant="outlined"
