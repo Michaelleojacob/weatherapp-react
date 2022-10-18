@@ -1,8 +1,13 @@
-import { TextField, Button } from "@mui/material";
+import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { LoadingButton } from "@mui/lab";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-const SearchBar = ({ location, handleLocation, handleSubmitLocation }) => {
+const SearchBar = ({
+  location,
+  handleLocation,
+  handleSubmitLocation,
+  loading,
+}) => {
   return (
     <>
       <form className="searchbar-form" onSubmit={handleSubmitLocation}>
@@ -13,14 +18,15 @@ const SearchBar = ({ location, handleLocation, handleSubmitLocation }) => {
           onChange={handleLocation}
           value={location}
         ></TextField>
-        <Button
+        <LoadingButton
+          loading={loading}
           variant="outlined"
           type="submit"
           size="large"
           className="searchbar-btn"
         >
           <SearchIcon className="searchbar-icon" size="large" />
-        </Button>
+        </LoadingButton>
       </form>
     </>
   );
