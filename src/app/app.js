@@ -48,6 +48,7 @@ const App = () => {
       setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
       throw new Error(err);
     }
   };
