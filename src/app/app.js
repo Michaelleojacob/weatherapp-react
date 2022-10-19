@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./components/searchbar/searchbar";
+import CardContainer from "./components/cardContainer/container";
 
 const App = () => {
   const [location, setLocation] = useState("london");
@@ -78,6 +79,11 @@ const App = () => {
         handleLocation={handleLocation}
         handleSubmitLocation={handleSubmitLocation}
         loading={loading}
+      />
+      <CardContainer
+        loading={loading}
+        currentWeather={currentWeather}
+        forcast={forcast}
       />
     </>
   );
