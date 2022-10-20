@@ -6,8 +6,15 @@ const CurrentWeather = ({ loading, currentWeather }) => {
       <div>{mockCurrent.name}</div>
       <img
         src={`https://openweathermap.org/img/wn/${mockCurrent.weather[0].icon}@2x.png`}
+        alt="weather icon"
       />
-      {/* <div>{mockCurrent}</div> */}
+      <div>{mockCurrent.main.temp}</div>
+      <div>
+        <div>low: {mockCurrent.main.temp_min}</div>
+        <div>high: {mockCurrent.main.temp_max}</div>
+        <div>humidity: {mockCurrent.main.humidity}</div>
+        <div>feels like: {mockCurrent.main.feels_like}</div>
+      </div>
     </>
   );
 };

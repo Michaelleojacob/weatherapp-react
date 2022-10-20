@@ -64,6 +64,7 @@ const App = () => {
 
   useEffect(() => {
     getWeather();
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     console.log(currentWeather);
