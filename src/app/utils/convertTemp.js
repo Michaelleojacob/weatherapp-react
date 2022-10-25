@@ -3,5 +3,5 @@ function kelvinToCal(kelvin) {
 }
 
 function kelvinToFah(kelvin) {
-  return kelvin - (273 * 9) / 5 + 32;
+  return Math.floor(((kelvin - 273) * 9) / 5 + 32);
 }

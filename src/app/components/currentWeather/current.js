@@ -1,6 +1,16 @@
 import mockCurrent from "../../utils/mockCurrent";
+import { kelvinToCal, kelvinToFah } from "../../utils/weatherData";
 
-const CurrentWeather = ({ loading, currentWeather }) => {
+const CurrentWeather = ({ loading, currentWeather, isImperial }) => {
+  console.log(mockCurrent.main.temp);
+  const mainF = kelvinToFah(mockCurrent.main.temp);
+  const lowF = kelvinToFah(mockCurrent.main.temp_min);
+  const highF = kelvinToFah(mockCurrent.main.temp_max);
+  const feelsF = kelvinToFah(mockCurrent.main.feels_like);
+  const mainC = kelvinToCal(mockCurrent.main.temp);
+  const lowC = kelvinToCal(mockCurrent.main.temp_min);
+  const highC = kelvinToCal(mockCurrent.main.temp_max);
+  const feelsC = kelvinToCal(mockCurrent.main.feels_like);
   return (
     <>
       <div>{mockCurrent.name}</div>
@@ -8,12 +18,11 @@ const CurrentWeather = ({ loading, currentWeather }) => {
         src={`https://openweathermap.org/img/wn/${mockCurrent.weather[0].icon}@2x.png`}
         alt="weather icon"
       />
-      <div>{mockCurrent.main.temp}</div>
+      <div>{isImperial ? mainC : mainF}</div>
       <div>
-        <div>low: {mockCurrent.main.temp_min}</div>
-        <div>high: {mockCurrent.main.temp_max}</div>
-        <div>humidity: {mockCurrent.main.humidity}</div>
-        <div>feels like: {mockCurrent.main.feels_like}</div>
+        <div>L {isImperial ? lowC : lowF}</div>
+        <div>H {isImperial ? highC : highF}</div>
+        <div>feels like: {isImperial ? feelsC : feelsF}</div>
       </div>
     </>
   );

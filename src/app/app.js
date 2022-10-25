@@ -3,11 +3,14 @@ import SearchBar from "./components/searchbar/searchbar";
 import CardContainer from "./components/cardContainer/container";
 
 const App = () => {
+  const [isImperial, setIsImperial] = useState(true);
   const [location, setLocation] = useState("london");
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forcast, setForcast] = useState(null);
   const apikey = process.env.REACT_APP_API_KEY;
+
+  const toggleImperial = () => setIsImperial(!isImperial);
 
   const geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apikey}`;
 
@@ -40,6 +43,7 @@ const App = () => {
       const { lat, lon } = await getLatLon();
       const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}`;
       const fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}`;
+
       const res = await Promise.allSettled([
         getData(currentUrl),
         getData(fiveDayUrl),
@@ -85,6 +89,7 @@ const App = () => {
         loading={loading}
         currentWeather={currentWeather}
         forcast={forcast}
+        isImperial={isImperial}
       />
     </>
   );
