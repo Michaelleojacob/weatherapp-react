@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 
-const CelFarSwitch = styled(Switch)(({ theme }) => ({
+const PracticeSwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -48,4 +48,4 @@ const CelFarSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default CelFarSwitch;
+export default PracticeSwitch;

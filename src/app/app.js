@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./components/searchbar/searchbar";
 import CardContainer from "./components/cardContainer/container";
+import CelFahSwitch from "./components/switch/celFahSwitch";
 
 const App = () => {
   const [isImperial, setIsImperial] = useState(true);
@@ -85,6 +86,7 @@ const App = () => {
         handleSubmitLocation={handleSubmitLocation}
         loading={loading}
       />
+      <CelFahSwitch toggleImperial={toggleImperial} />
       <CardContainer
         loading={loading}
         currentWeather={currentWeather}
