@@ -1454,7 +1454,6 @@ const chunkForcast = (arr) => {
   const map = new Map();
   for (let i = 0; i < arr.length; i++) {
     const dt = arr[i].dt_txt.split(" ")[0];
-    // console.log(dt);
     if (map.has(dt)) {
       map.set(dt, [...map.get(dt), arr[i]]);
     } else {
