@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import chunkForcast from "./utils/chunkFiveDayForcast";
 import SearchBar from "./components/searchbar/searchbar";
 import CardContainer from "./components/cardContainer/container";
 import CelFahSwitch from "./components/switch/celFahSwitch";
@@ -50,7 +51,8 @@ const App = () => {
         getData(fiveDayUrl),
       ]);
       setCurrentWeather(res[0].value);
-      setForcast(res[1].value);
+      const chunkByDay = chunkForcast(res[1].value.list);
+      setForcast(chunkByDay);
       setLoading(false);
     } catch (err) {
       console.error(err);
