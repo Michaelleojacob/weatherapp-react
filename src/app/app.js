@@ -51,8 +51,8 @@ const App = () => {
         getData(fiveDayUrl),
       ]);
       setCurrentWeather(res[0].value);
-      const chunkByDay = chunkForcast(res[1].value.list);
-      setForcast(chunkByDay);
+      const chunkByDay = await chunkForcast(res[1].value.list);
+      await setForcast(chunkByDay);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -73,12 +73,12 @@ const App = () => {
     getWeather();
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    console.log(currentWeather);
-  }, [currentWeather]);
-  useEffect(() => {
-    console.log(forcast);
-  }, [forcast]);
+  // useEffect(() => {
+  //   console.log(currentWeather);
+  // }, [currentWeather]);
+  // useEffect(() => {
+  //   console.log(forcast);
+  // }, [forcast]);
 
   return (
     <>

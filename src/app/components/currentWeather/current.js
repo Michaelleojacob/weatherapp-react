@@ -1,7 +1,7 @@
 import mockCurrent from "../../utils/mockCurrent";
 import { kelvinToCal, kelvinToFah } from "../../utils/weatherData";
 
-const CurrentWeather = ({ loading, currentWeather, isImperial }) => {
+const CurrentWeather = ({ currentWeather, isImperial }) => {
   const mainF = kelvinToFah(mockCurrent.main.temp);
   const lowF = kelvinToFah(mockCurrent.main.temp_min);
   const highF = kelvinToFah(mockCurrent.main.temp_max);

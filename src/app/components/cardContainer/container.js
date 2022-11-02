@@ -4,12 +4,15 @@ import Forcast from "../forcast/forcast";
 const CardContainer = ({ loading, currentWeather, forcast, isImperial }) => {
   return (
     <>
-      <CurrentWeather
-        loading={loading}
-        currentWeather={currentWeather}
-        isImperial={isImperial}
-      />
-      <Forcast loading={loading} forcast={forcast} />
+      {loading ? (
+        ""
+      ) : (
+        <CurrentWeather
+          currentWeather={currentWeather}
+          isImperial={isImperial}
+        />
+      )}
+      {loading ? "loading..." : <Forcast forcast={forcast} />}
     </>
   );
 };
