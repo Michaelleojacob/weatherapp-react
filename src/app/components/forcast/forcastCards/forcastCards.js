@@ -33,9 +33,9 @@ const ForcastCard = ({ dt_txt, list, isImperial }) => {
         <div className='forcast-card-temp'>
           {isImperial ? lowTemp[0] : lowTemp[1]}&deg;
         </div>
-        <div className='forcast-card-temp'>
+        {/* <div className='forcast-card-temp'>
           {isImperial ? avgTemp[0] : avgTemp[1]}&deg;
-        </div>
+        </div> */}
         <div className='forcast-card-temp'>
           {isImperial ? highTemp[0] : highTemp[1]}&deg;
         </div>
