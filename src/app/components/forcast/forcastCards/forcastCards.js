@@ -1,13 +1,13 @@
-import LowHiAvg from "../../../utils/getLowHighAvg";
+import LowHiAvg from '../../../utils/getLowHighAvg';
 
 const weekday = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
 ];
 
 const ForcastCard = ({ dt_txt, list }) => {

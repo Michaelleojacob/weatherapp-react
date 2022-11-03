@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import chunkForcast from "./utils/chunkFiveDayForcast";
-import SearchBar from "./components/searchbar/searchbar";
-import CardContainer from "./components/cardContainer/container";
-import CelFahSwitch from "./components/switch/celFahSwitch";
+import { useEffect, useState } from 'react';
+import chunkForcast from './utils/chunkFiveDayForcast';
+import SearchBar from './components/searchbar/searchbar';
+import CardContainer from './components/cardContainer/container';
+import CelFahSwitch from './components/switch/celFahSwitch';
 
 const App = () => {
   const [isImperial, setIsImperial] = useState(true);
-  const [location, setLocation] = useState("london");
+  const [location, setLocation] = useState('london');
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forcast, setForcast] = useState(null);
@@ -23,7 +23,7 @@ const App = () => {
       const { lat, lon } = data[0];
       return { lat, lon };
     } catch (err) {
-      console.error("getLatLon failed");
+      console.error('getLatLon failed');
       throw new Error(err);
     }
   };
@@ -66,7 +66,7 @@ const App = () => {
   const handleSubmitLocation = (e) => {
     e.preventDefault();
     getWeather();
-    setLocation("");
+    setLocation('');
   };
 
   useEffect(() => {
