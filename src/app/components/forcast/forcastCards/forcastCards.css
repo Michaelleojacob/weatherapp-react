@@ -1,0 +1,14 @@
+.forcast-card {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.forcast-card-icon {
+  max-width: 3em;
+  max-height: 3em;
+}
+
+.forcast-card-temp{
+  display: flex;
+
+}

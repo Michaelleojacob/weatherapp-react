@@ -1,4 +1,6 @@
 @import url(./app/components/searchbar/searchbar.css);
+@import url(./app/components/forcast/forcast.css);
+@import url(./app/components/forcast/forcastCards/forcastCards.css);
 
 body,
 html {
