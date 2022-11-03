@@ -1,17 +1,9 @@
 const LowHiAvg = (arr) => {
   const dayData = [];
-  const conditions = new Map();
+
   const icons = new Map();
+
   for (let segment of arr) {
-    // console.log(segment);
-
-    conditions.has(segment.weather[0].main)
-      ? conditions.set(
-          segment.weather[0].main,
-          conditions.get(segment.weather[0].main) + 1
-        )
-      : conditions.set(segment.weather[0].main, 0);
-
     icons.has(segment.weather[0].icon)
       ? icons.set(
           segment.weather[0].icon,
@@ -23,13 +15,12 @@ const LowHiAvg = (arr) => {
     dayData.push(Math.floor(segment.main.temp_max));
   }
   const icon = getHighestCount(icons.entries());
-  const condition = getHighestCount(conditions.entries());
 
   const low = Math.min(...dayData);
   const high = Math.max(...dayData);
   const avg = Math.floor((high + low) / 2);
 
-  return { low, high, avg, condition, icon };
+  return { low, high, avg, icon };
 };
 
 export default LowHiAvg;

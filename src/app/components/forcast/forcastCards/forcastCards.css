@@ -1,6 +1,9 @@
 .forcast-card {
-  display: flex;
+  display: grid;
   /* flex-direction: column; */
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
 .forcast-card-icon {
@@ -8,7 +11,11 @@
   max-height: 3em;
 }
 
-.forcast-card-temp{
-  display: flex;
+.forcast-card-temp-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
+.forcast-card-temp {
+  padding: 0.5em;
 }
