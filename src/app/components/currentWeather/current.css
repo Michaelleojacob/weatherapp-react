@@ -1,3 +1,27 @@
 .current-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+.current-icon {
+  max-width: 125px;
+  max-height: 125px;
+}
+
+.current-low-hi {
+  display: flex;
+}
+
+.current-low-hi > * {
+  padding: 0 0.5em;
+}
+
+.current-main {
+  font-size: 2rem;
+}
+
+.current-main-deg {
+  position: absolute;
 }

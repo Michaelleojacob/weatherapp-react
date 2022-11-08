@@ -1,0 +1,11 @@
+.deg {
+  position: absolute;
+}
+
+.low {
+  color: blue;
+}
+
+.high {
+  color: orange;
+}
