@@ -1,11 +1,11 @@
-import CurrentWeather from '../currentWeather/current';
-import Forcast from '../forcast/forcast';
+import CurrentWeather from "../currentWeather/current";
+import Forecast from "../forecast/forecast";
 
-const CardContainer = ({ loading, currentWeather, forcast, isImperial }) => {
+const CardContainer = ({ loading, currentWeather, forecast, isImperial }) => {
   return (
     <>
       {loading ? (
-        ''
+        ""
       ) : (
         <CurrentWeather
           currentWeather={currentWeather}
@@ -13,9 +13,9 @@ const CardContainer = ({ loading, currentWeather, forcast, isImperial }) => {
         />
       )}
       {loading ? (
-        'loading...'
+        "loading..."
       ) : (
-        <Forcast forcast={forcast} isImperial={isImperial} />
+        <Forecast forecast={forecast} isImperial={isImperial} />
       )}
     </>
   );

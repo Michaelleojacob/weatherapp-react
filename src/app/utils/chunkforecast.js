@@ -1,4 +1,4 @@
-// const mockForcast = [
+// const mockforecast = [
 //   {
 //     dt: 1666828800,
 //     main: {
@@ -1450,7 +1450,7 @@
 //   },
 // ];
 
-const chunkForcast = (arr) => {
+const chunkforecast = (arr) => {
   const map = new Map();
   for (let i = 0; i < arr.length; i++) {
     const dt = arr[i].dt_txt.split(" ")[0];
@@ -1463,4 +1463,4 @@ const chunkForcast = (arr) => {
   return map;
 };
 
-export default chunkForcast;
+export default chunkforecast;

@@ -1,8 +1,8 @@
 @import url(./app/app.css);
 @import url(./app/components/searchbar/searchbar.css);
 @import url(./app/components/currentWeather/current.css);
-@import url(./app/components/forcast/forcast.css);
-@import url(./app/components/forcast/forcastCards/forcastCards.css);
+@import url(./app/components/forecast/forecast.css);
+@import url(./app/components/forecast/forecastCards/forecastCards.css);
 
 body,
 html {

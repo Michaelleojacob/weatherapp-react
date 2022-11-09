@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import chunkForcast from './utils/chunkFiveDayForcast';
-import SearchBar from './components/searchbar/searchbar';
-import CardContainer from './components/cardContainer/container';
-import CelFahSwitch from './components/switch/celFahSwitch';
+import { useEffect, useState } from "react";
+import chunkforecast from "./utils/chunkforecast";
+import SearchBar from "./components/searchbar/searchbar";
+import CardContainer from "./components/cardContainer/container";
+import CelFahSwitch from "./components/switch/celFahSwitch";
 
 const App = () => {
   const [isImperial, setIsImperial] = useState(true);
-  const [location, setLocation] = useState('london');
+  const [location, setLocation] = useState("london");
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [forcast, setForcast] = useState(null);
+  const [forecast, setforecast] = useState(null);
   const apikey = process.env.REACT_APP_API_KEY;
 
   const toggleImperial = () => setIsImperial(!isImperial);
@@ -23,7 +23,7 @@ const App = () => {
       const { lat, lon } = data[0];
       return { lat, lon };
     } catch (err) {
-      console.error('getLatLon failed');
+      console.error("getLatLon failed");
       throw new Error(err);
     }
   };
@@ -51,8 +51,8 @@ const App = () => {
         getData(fiveDayUrl),
       ]);
       setCurrentWeather(res[0].value);
-      const chunkByDay = await chunkForcast(res[1].value.list);
-      await setForcast(chunkByDay);
+      const chunkByDay = await chunkforecast(res[1].value.list);
+      await setforecast(chunkByDay);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -66,7 +66,7 @@ const App = () => {
   const handleSubmitLocation = (e) => {
     e.preventDefault();
     getWeather();
-    setLocation('');
+    setLocation("");
   };
 
   useEffect(() => {
@@ -77,8 +77,8 @@ const App = () => {
   //   console.log(currentWeather);
   // }, [currentWeather]);
   // useEffect(() => {
-  //   console.log(forcast);
-  // }, [forcast]);
+  //   console.log(forecast);
+  // }, [forecast]);
 
   return (
     <>
@@ -92,7 +92,7 @@ const App = () => {
       <CardContainer
         loading={loading}
         currentWeather={currentWeather}
-        forcast={forcast}
+        forecast={forecast}
         isImperial={isImperial}
       />
     </>
