@@ -4,15 +4,15 @@ import Forecast from "../forecast/forecast";
 const CardContainer = ({ loading, currentWeather, forecast, isImperial }) => {
   return (
     <>
-      {loading ? (
-        ""
+      {currentWeather === null && forecast === null ? (
+        "loading..."
       ) : (
         <CurrentWeather
           currentWeather={currentWeather}
           isImperial={isImperial}
         />
       )}
-      {loading ? (
+      {currentWeather === null && forecast === null ? (
         "loading..."
       ) : (
         <Forecast forecast={forecast} isImperial={isImperial} />

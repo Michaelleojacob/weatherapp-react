@@ -1,9 +1,7 @@
-import mockCurrent from "../../utils/mockCurrent";
 import convertTemp from "../../utils/convertTemp";
 
 const CurrentWeather = ({ currentWeather, isImperial }) => {
-  const { main } = mockCurrent;
-  console.log(mockCurrent);
+  const { main } = currentWeather;
   const mainTemp = convertTemp(main.temp);
   const lowTemp = convertTemp(main.temp_min);
   const highTemp = convertTemp(main.temp_max);
@@ -11,17 +9,17 @@ const CurrentWeather = ({ currentWeather, isImperial }) => {
 
   return (
     <div className="current-container">
-      <div>{mockCurrent.name}</div>
+      <div>{currentWeather.name}</div>
       {/* <img
         className="current-icon"
-        src={`https://openweathermap.org/img/wn/${mockCurrent.weather[0].icon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
         alt="weather icon"
       /> */}
       <div className="current-main">
         {isImperial ? mainTemp[0] : mainTemp[1]}
         <span className="deg">&deg;</span>
       </div>
-      <div>{mockCurrent.weather[0].main}</div>
+      <div>{currentWeather.weather[0].main}</div>
       <div className="current-low-hi">
         <div className="low">
           L:{isImperial ? lowTemp[0] : lowTemp[1]}
