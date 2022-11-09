@@ -10,6 +10,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setforecast] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const apikey = process.env.REACT_APP_API_KEY;
 
   const toggleImperial = () => setIsImperial(!isImperial);
@@ -42,6 +43,7 @@ const App = () => {
   const getWeather = async () => {
     try {
       setLoading(true);
+      // const {lat, lon} = userLocation === null ? await getLatLon() : userLocation
       const { lat, lon } = await getLatLon();
       const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}`;
       const fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}`;
@@ -50,13 +52,9 @@ const App = () => {
         getData(currentUrl),
         getData(fiveDayUrl),
       ]);
-      await setCurrentWeather(res[0].value);
-      console.log(currentWeather.weather[0].main);
-      res[1].value.list.forEach((item) =>
-        console.log(item.weather[0].description)
-      );
-      const chunkByDay = await chunkforecast(res[1].value.description);
-      await setforecast(chunkByDay);
+      setCurrentWeather(res[0].value);
+      const chunkByDay = chunkforecast(res[1].value.list);
+      setforecast(chunkByDay);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -67,6 +65,24 @@ const App = () => {
 
   const handleLocation = (e) => setLocation(e.target.value);
 
+  const navGeolocationSuccess = (position) => {
+    setUserLocation(position);
+  };
+  const navGeoloationFail = (err) => console.warn(err);
+  const navGeolocationOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  const getUserLocation = async () => {
+    navigator.geolocation.getCurrentPosition(
+      navGeolocationSuccess,
+      navGeoloationFail,
+      navGeolocationOptions
+    );
+  };
+
   const handleSubmitLocation = (e) => {
     e.preventDefault();
     getWeather();
@@ -74,10 +90,14 @@ const App = () => {
   };
 
   useEffect(() => {
+    getUserLocation();
     getWeather();
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    console.log(userLocation);
+  }, [userLocation]);
   // useEffect(() => {
   //   console.log(loading);
   // }, [loading]);
