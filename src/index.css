@@ -1,5 +1,6 @@
 @import url(./app/app.css);
 @import url(./app/components/cardContainer/container.css);
+@import url(./app/components/switch/switch.css);
 @import url(./app/components/searchbar/searchbar.css);
 @import url(./app/components/currentWeather/current.css);
 @import url(./app/components/forecast/forecast.css);
