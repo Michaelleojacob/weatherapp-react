@@ -1,5 +1,6 @@
 import LowHiAvg from "../../../utils/getLowHighAvg";
 import convertTemp from "../../../utils/convertTemp";
+import getIcon from "../../../utils/getIcon";
 
 const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -7,7 +8,7 @@ const ForecastCard = ({ dt_txt, list, isImperial }) => {
   const mid = Math.floor(list.length / 2);
   const numericDay = new Date(list[mid].dt_txt).getDay();
   const dayOfWeek = weekday[numericDay];
-  const { low, high, icon } = LowHiAvg(list);
+  const { low, high, icon, condition } = LowHiAvg(list);
 
   const lowTemp = convertTemp(low);
   const highTemp = convertTemp(high);
@@ -16,11 +17,15 @@ const ForecastCard = ({ dt_txt, list, isImperial }) => {
   return (
     <div className="forecast-card">
       <div>{dayOfWeek}</div>
-      <img
+      {/* <img
         className="forecast-card-icon"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weather icon"
-      />
+      /> */}
+      <img
+        className="forecast-card-icon"
+        src={`${process.env.PUBLIC_URL}${getIcon(condition)}`}
+      ></img>
       <div className="forecast-card-temp-container">
         <div className="forecast-card-temp low">
           {isImperial ? lowTemp[0] : lowTemp[1]}

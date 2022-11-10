@@ -3,7 +3,7 @@ import Forecast from "../forecast/forecast";
 
 const CardContainer = ({ loading, currentWeather, forecast, isImperial }) => {
   return (
-    <>
+    <div className="card-container">
       {currentWeather === null && forecast === null ? (
         "loading..."
       ) : (
@@ -13,11 +13,11 @@ const CardContainer = ({ loading, currentWeather, forecast, isImperial }) => {
         />
       )}
       {currentWeather === null && forecast === null ? (
-        "loading..."
+        ""
       ) : (
         <Forecast forecast={forecast} isImperial={isImperial} />
       )}
-    </>
+    </div>
   );
 };
 
