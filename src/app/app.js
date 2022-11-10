@@ -128,9 +128,9 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    console.log(condition);
-  }, [condition]);
+  // useEffect(() => {
+  //   console.log(condition);
+  // }, [condition]);
   // useEffect(() => {
   //   console.log(loading);
   // }, [loading]);
@@ -143,20 +143,22 @@ const App = () => {
 
   return (
     <div className='app'>
-      <div className='app-content'>
-        <SearchBar
-          location={location}
-          handleLocation={handleLocation}
-          handleSubmitLocation={handleSubmitLocation}
-          loading={loading}
-        />
-        <CelFahSwitch toggleImperial={toggleImperial} />
-        <CardContainer
-          loading={loading}
-          currentWeather={currentWeather}
-          forecast={forecast}
-          isImperial={isImperial}
-        />
+      <div className='app-content-wrap'>
+        <div className='app-content'>
+          <SearchBar
+            location={location}
+            handleLocation={handleLocation}
+            handleSubmitLocation={handleSubmitLocation}
+            loading={loading}
+          />
+          <CelFahSwitch toggleImperial={toggleImperial} />
+          <CardContainer
+            loading={loading}
+            currentWeather={currentWeather}
+            forecast={forecast}
+            isImperial={isImperial}
+          />
+        </div>
       </div>
       <div
         className='app-background'

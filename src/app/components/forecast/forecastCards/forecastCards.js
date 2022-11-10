@@ -1,6 +1,5 @@
 import LowHiAvg from '../../../utils/getLowHighAvg';
 import convertTemp from '../../../utils/convertTemp';
-import getIcon from '../../../utils/getIcon';
 
 const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -12,13 +11,14 @@ const ForecastCard = ({ list, isImperial }) => {
 
   const lowTemp = convertTemp(low);
   const highTemp = convertTemp(high);
+  console.log(condition);
 
   return (
     <div className='forecast-card'>
       <div>{dayOfWeek}</div>
       <img
         className='forecast-card-icon'
-        src={`${process.env.PUBLIC_URL}${getIcon(condition)}`}
+        src={`${process.env.PUBLIC_URL}/assets/icons/${condition}.png`}
         alt={'weather_icon'}></img>
       <div className='forecast-card-temp-container'>
         <div className='forecast-card-temp low'>
