@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em;
 }
 
 .current-icon {
@@ -15,8 +14,9 @@
 }
 
 .current-low-hi > * {
-  padding: 0 0.5em;
+  padding: 0 0.75em;
 }
+
 
 .current-main {
   font-size: 2rem;

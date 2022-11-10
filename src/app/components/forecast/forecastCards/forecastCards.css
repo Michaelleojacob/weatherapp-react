@@ -4,6 +4,7 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
+  : 0.5em;
 }
 
 .forecast-card-icon {
@@ -14,8 +15,8 @@
 .forecast-card-temp-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.forecast-card-temp {
-  padding: 0.5em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }

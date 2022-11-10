@@ -1,16 +1,33 @@
-import { useEffect, useState } from "react";
-import chunkforecast from "./utils/chunkforecast";
-import SearchBar from "./components/searchbar/searchbar";
-import CardContainer from "./components/cardContainer/container";
-import CelFahSwitch from "./components/switch/celFahSwitch";
+import { useEffect, useState } from 'react';
+import chunkforecast from './utils/chunkforecast';
+import SearchBar from './components/searchbar/searchbar';
+import CardContainer from './components/cardContainer/container';
+import CelFahSwitch from './components/switch/celFahSwitch';
 
 const App = () => {
   const [isImperial, setIsImperial] = useState(true);
-  const [location, setLocation] = useState("london");
+  const [location, setLocation] = useState('london');
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setforecast] = useState(null);
+  const [condition, setCondition] = useState('Clear');
   const apikey = process.env.REACT_APP_API_KEY;
+
+  // const styles = {
+  //   header: {
+  //     backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/${condition}).jpg`,
+  //     height: '100vh',
+  //     backgroundPosition: 'center',
+  //     backgroundRepeat: 'no-repeat',
+  //     backgroundSize: 'cover',
+  //   },
+
+  //   content: {
+  //     height: '100%',
+  //     width: '100%',
+  //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  //   },
+  // };
 
   const toggleImperial = () => setIsImperial(!isImperial);
 
@@ -22,7 +39,7 @@ const App = () => {
       const { lat, lon } = data[0];
       return { lat, lon };
     } catch (err) {
-      console.error("getLatLon failed");
+      console.error('getLatLon failed');
       throw new Error(err);
     }
   };
@@ -61,6 +78,7 @@ const App = () => {
       const chunkByDay = chunkforecast(res[1].value.list);
 
       setforecast(chunkByDay);
+      setCondition(res[0].value.weather[0].main);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -75,20 +93,20 @@ const App = () => {
     e.preventDefault();
     const { lat, lon } = await getLatLon();
     await getWeather(lat, lon);
-    setLocation("");
+    setLocation('');
   };
 
   const navGeolocationSuccess = async (position) => {
     const { latitude, longitude } = position.coords;
     await getWeather(latitude, longitude);
-    setLocation("");
+    setLocation('');
   };
 
   const navGeoloationFail = async (err) => {
     console.warn(err);
     const { lat, lon } = await getLatLon();
     await getWeather(lat, lon);
-    setLocation("");
+    setLocation('');
   };
 
   const navGeolocationOptions = {
@@ -110,36 +128,49 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  // useEffect(() => {
-  //   console.log(userLocation);
-  // }, [userLocation]);
+  useEffect(() => {
+    console.log(condition);
+  }, [condition]);
   // useEffect(() => {
   //   console.log(loading);
   // }, [loading]);
   // useEffect(() => {
-  // console.log(currentWeather);
+  //   console.log(currentWeather.weather[0].main);
   // }, [currentWeather]);
   // useEffect(() => {
   // console.log(forecast);
   // }, [forecast]);
 
   return (
-    <>
-      <SearchBar
-        location={location}
-        handleLocation={handleLocation}
-        handleSubmitLocation={handleSubmitLocation}
-        loading={loading}
-      />
-      <CelFahSwitch toggleImperial={toggleImperial} />
-      <CardContainer
-        loading={loading}
-        currentWeather={currentWeather}
-        forecast={forecast}
-        isImperial={isImperial}
-      />
-    </>
+    <div className='app'>
+      <div className='app-content'>
+        <SearchBar
+          location={location}
+          handleLocation={handleLocation}
+          handleSubmitLocation={handleSubmitLocation}
+          loading={loading}
+        />
+        <CelFahSwitch toggleImperial={toggleImperial} />
+        <CardContainer
+          loading={loading}
+          currentWeather={currentWeather}
+          forecast={forecast}
+          isImperial={isImperial}
+        />
+      </div>
+      <div
+        className='app-background'
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/${condition}.jpg)`,
+        }}></div>
+    </div>
   );
 };
 
 export default App;
+
+/**
+ * style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/${condition}.jpg)`,
+      }}
+ */

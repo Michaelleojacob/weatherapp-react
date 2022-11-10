@@ -1,5 +1,4 @@
 .searchbar-btn {
-  padding: 15px, 22px;
 }
 
 .searchbar-icon {
@@ -9,5 +8,4 @@
 .searchbar-form {
   display: flex;
   gap: 0.5rem;
-  padding: 1rem;
 }
