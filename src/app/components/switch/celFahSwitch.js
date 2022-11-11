@@ -1,11 +1,22 @@
 import './switch.css';
-import { Switch } from '@mui/material';
+import CustomSwitch from './customSwitch';
 
 const CelFahSwitch = ({ toggleImperial }) => {
   return (
     <div className='switch-container'>
       <label>C</label>
-      <Switch size='large' onChange={toggleImperial} />
+      <CustomSwitch
+        size='large'
+        onChange={toggleImperial}
+        sx={[
+          {
+            '&:unchecked': {
+              color: 'blue',
+              backgroundColor: 'blue',
+            },
+          },
+        ]}
+      />
       <label>F</label>
     </div>
   );

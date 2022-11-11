@@ -7,7 +7,7 @@
 }
 
 .high {
-  color: orange;
+  color: red;
 }
 
 .app {
@@ -28,7 +28,7 @@
   font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
   /* use system font stack: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
   font-family: system-ui;
-  height: 100vh;
+  height: 100%;
   z-index: 999;
   position: relative;
 }
@@ -56,5 +56,8 @@
 }
 
 .app-content {
-  display: flex;
+  display: grid;
+  height: 100%;
+  grid-template-rows: min-content min-content auto;
+  justify-items: center;
 }

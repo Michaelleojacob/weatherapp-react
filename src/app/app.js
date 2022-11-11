@@ -13,22 +13,6 @@ const App = () => {
   const [condition, setCondition] = useState('Clear');
   const apikey = process.env.REACT_APP_API_KEY;
 
-  // const styles = {
-  //   header: {
-  //     backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/${condition}).jpg`,
-  //     height: '100vh',
-  //     backgroundPosition: 'center',
-  //     backgroundRepeat: 'no-repeat',
-  //     backgroundSize: 'cover',
-  //   },
-
-  //   content: {
-  //     height: '100%',
-  //     width: '100%',
-  //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  //   },
-  // };
-
   const toggleImperial = () => setIsImperial(!isImperial);
 
   const getLatLon = async () => {
