@@ -49,15 +49,6 @@ const App = () => {
         getData(fiveDayUrl),
       ]);
 
-      // console.log(
-      //   res[0].value.weather[0].main,
-      //   res[0].value.weather[0].description
-      // );
-
-      // res[1].value.list.forEach((item) =>
-      //   console.log(item.weather[0].main, item.weather[0].description)
-      // );
-
       setCurrentWeather(res[0].value);
       const chunkByDay = chunkforecast(res[1].value.list);
 
@@ -112,19 +103,6 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  // useEffect(() => {
-  //   console.log(condition);
-  // }, [condition]);
-  // useEffect(() => {
-  //   console.log(loading);
-  // }, [loading]);
-  // useEffect(() => {
-  //   console.log(currentWeather.weather[0].main);
-  // }, [currentWeather]);
-  // useEffect(() => {
-  // console.log(forecast);
-  // }, [forecast]);
-
   return (
     <div className='app'>
       <div className='app-content-wrap'>
@@ -154,9 +132,3 @@ const App = () => {
 };
 
 export default App;
-
-/**
- * style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/${condition}.jpg)`,
-      }}
- */
