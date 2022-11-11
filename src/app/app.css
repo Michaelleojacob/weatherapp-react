@@ -60,4 +60,5 @@
   height: 100%;
   grid-template-rows: min-content min-content auto;
   justify-items: center;
+  grid-gap: 1em;
 }

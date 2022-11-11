@@ -3,11 +3,12 @@ import chunkforecast from './utils/chunkforecast';
 import SearchBar from './components/searchbar/searchbar';
 import CardContainer from './components/cardContainer/container';
 import CelFahSwitch from './components/switch/celFahSwitch';
+import SkeletonContainer from './components/SkeletonComponent/SkeletonComponent';
 
 const App = () => {
   const [isImperial, setIsImperial] = useState(true);
   const [location, setLocation] = useState('london');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setforecast] = useState(null);
   const [condition, setCondition] = useState('Clear');
@@ -48,10 +49,8 @@ const App = () => {
         getData(currentUrl),
         getData(fiveDayUrl),
       ]);
-
       setCurrentWeather(res[0].value);
       const chunkByDay = chunkforecast(res[1].value.list);
-
       setforecast(chunkByDay);
       setCondition(res[0].value.weather[0].main);
       setLoading(false);
@@ -114,12 +113,15 @@ const App = () => {
             loading={loading}
           />
           <CelFahSwitch toggleImperial={toggleImperial} />
-          <CardContainer
-            loading={loading}
-            currentWeather={currentWeather}
-            forecast={forecast}
-            isImperial={isImperial}
-          />
+          {loading ? (
+            <SkeletonContainer />
+          ) : (
+            <CardContainer
+              currentWeather={currentWeather}
+              forecast={forecast}
+              isImperial={isImperial}
+            />
+          )}
         </div>
       </div>
       <div

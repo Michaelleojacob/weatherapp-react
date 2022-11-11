@@ -11,7 +11,6 @@ const ForecastCard = ({ list, isImperial }) => {
 
   const lowTemp = convertTemp(low);
   const highTemp = convertTemp(high);
-  console.log(condition);
 
   return (
     <div className='forecast-card'>
