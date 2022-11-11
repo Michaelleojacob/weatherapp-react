@@ -5,18 +5,7 @@ const CelFahSwitch = ({ toggleImperial }) => {
   return (
     <div className='switch-container'>
       <label>C</label>
-      <CustomSwitch
-        size='large'
-        onChange={toggleImperial}
-        sx={[
-          {
-            '&:unchecked': {
-              color: 'blue',
-              backgroundColor: 'blue',
-            },
-          },
-        ]}
-      />
+      <CustomSwitch onChange={toggleImperial} defaultChecked={false} />
       <label>F</label>
     </div>
   );
